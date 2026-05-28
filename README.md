@@ -1,305 +1,305 @@
 # FH6Auto
 
-一个基于 **Python + 图像识别 + 输入自动化** 的 FH6 视觉脚本工具。  
-支持 **循环跑图 / 批量买车 / 超级抽奖 / 移除车辆 / 多模块串联 / 无限循环挂机**。
+A FH6 visual scripting tool based on **Python + image recognition + input automation**.
+Supports **race-farming loops / bulk car buying / super wheelspin / car removal / multi-module chaining / endless idle farming**.
 
-> 仅供 Python 自动化技术交流与学习使用，请勿用于商业用途或破坏游戏平衡。  
-> 因使用本工具造成的任何后果（包括但不限于封号、异常、损失等），由使用者自行承担。
-
----
-
-## 项目简介
-
-FH6Auto 是一个围绕游戏界面自动识别与流程控制设计的桌面自动化工具。  
-项目以 **图像识别** 作为流程引导核心，尽量避免纯按键脚本“盲操作”带来的失控风险。
-
-工具通过以下方式实现自动执行：
-
-- 截图识别当前游戏状态
-- 动态判断是否进入目标页面
-- 触发键盘 / 鼠标操作
-- 在出错时自动尝试恢复运行环境
-
-相比传统纯按键脚本，本项目在稳定性、适应性和可控性方面更好。
+> For Python automation learning and technical exchange only. Do not use it for commercial purposes or to break game balance.
+> You bear all consequences of using this tool (including but not limited to bans, anomalies, and losses).
 
 ---
 
-## 功能模块
+## Overview
 
-### 1. 循环跑图
-- 自动进入菜单
-- 自动切换创意中心 / EventLab
-- 自动输入蓝图分享代码
-- 自动匹配目标车辆
-- 自动循环开始赛事
-- 支持按设定次数重复执行
+FH6Auto is a desktop automation tool designed around automatic recognition of the game UI and flow control.
+It uses **image recognition** as the core of its flow guidance to avoid the loss-of-control risk that comes from pure "blind" key-pressing scripts.
 
-### 2. 批量买车
-- 自动进入车辆收藏
-- 自动定位目标品牌
-- 自动选择指定车辆
-- 自动重复购买
-- 支持按设定次数批量执行
+The tool automates execution by:
 
-### 3. 超级抽奖
-- 自动进入买车流程
-- 自动定位目标车辆
-- 自动进入升级 / 熟练度界面
-- 自动按技能矩阵点技能
-- 支持技能点耗尽后自动结束模块
+- Taking screenshots to recognize the current game state
+- Dynamically deciding whether the target page has been reached
+- Triggering keyboard / mouse actions
+- Automatically attempting to recover the runtime state on errors
 
-
-### 4. 大循环挂机
-支持模块串联形成完整流水线：
-
-**跑图 → 买车 → 抽奖 → 重置计数 → 下一轮**
-
-可配置：
-- 是否继续到下一模块
-- 是否在三模块完成后重新循环
-- 总循环次数
-- 近似无限挂机执行
-
-
-## 使用方法
-
-### 1. 启动前准备
-
-#### 车辆准备
-请先购买一辆用于跑图的 **斯巴鲁 Impreza 22B-STi Version**，并完成以下准备：
-
-- 调校至 **S2 900**
-- 将该车辆加入收藏
-- 不要有任何涂装
-
-#### 使用前建议确认
-- **关闭任何滤镜、HDR等影响色彩的内容**
-- 游戏已经正常启动
-- 游戏设置为 **简体中文**
-- 键盘输入法切换为 **英文键盘**
-- 游戏内建议设置为 **自动转向** , **自动挡** ,难度 **所向披靡**
-- 游戏界面尽量保持稳定
-- 不要随意切换到其他窗口，以免影响识图结果
+Compared with traditional pure key-press scripts, this project offers better stability, adaptability, and controllability.
 
 ---
 
-### 2. 配置参数
+## Feature modules
 
-在程序主界面中可设置：
+### 1. Race-farming loop
+- Auto-enter the menu
+- Auto-switch to Creative Hub / EventLab
+- Auto-enter the blueprint share code
+- Auto-match the target car
+- Auto-loop to start the event
+- Repeats the configured number of times
 
-- 跑图次数
-- 买车次数
-- 抽奖次数
-- 蓝图分享代码
-- 总循环次数
-- 是否串联下一模块
-- 是否启用三模块大循环
-- 是否开启自动重启机制
-- 自动重启命令
+### 2. Bulk car buying
+- Auto-enter the car collection
+- Auto-locate the target brand
+- Auto-select the specified car
+- Auto-repeat the purchase
+- Runs in bulk for the configured number of times
 
----
+### 3. Super wheelspin
+- Auto-enter the buy-car flow
+- Auto-locate the target car
+- Auto-enter the upgrade / mastery screen
+- Auto-spend skill points following the skill matrix
+- Auto-ends the module once skill points are exhausted
 
-### 3. 设置技能路径
 
-在“超级抽奖”模块区域中：
+### 4. Big idle loop
+Chains modules together into a full pipeline:
 
-- 点击方向按钮添加技能路径
-- 点击“清除矩阵”重置路径
-- 蓝色格子表示当前技能行走路径
+**race → buy → wheelspin → reset counters → next round**
 
----
+Configurable options:
+- Whether to continue to the next module
+- Whether to loop again after all three modules complete
+- Total number of loops
+- Near-endless idle execution
 
-### 4. 启动单个模块
 
-可独立启动任意模块：
+## How to use
 
-- 循环跑图
-- 批量买车
-- 超级抽奖
+### 1. Preparation before launch
 
-程序会从对应模块开始执行。
+#### Car preparation
+First buy a **Subaru Impreza 22B-STi Version** to use for race farming, and prepare it as follows:
 
----
+- Tune it to **S2 900**
+- Add the car to your favorites
+- Keep it free of any livery
 
-### 5. 启动串联流程
-
-如果勾选箭头处的“继续”选项，则模块会自动串联，例如：
-
-- 跑图完成后继续买车
-- 买车完成后继续抽奖
-
-如果再勾选 `LOOP -> 循环清零`，则三模块完成后会自动进入下一轮。
-
----
-
-### 6. 停止脚本
-
-可通过以下方式停止：
-
-- 点击界面中的停止按钮
-- 按下键盘 **F8**
-
-停止后程序会尽量：
-- 停止当前线程
-- 释放所有已按下的按键
-- 恢复主界面状态
+#### Recommended checks before use
+- **Turn off any filters, HDR, or anything else that affects colors**
+- The game is already running normally
+- The game language is set to **Simplified Chinese**
+- The keyboard input method is switched to an **English keyboard**
+- In-game it is recommended to use **auto steering**, **automatic transmission**, and the **Unbeatable** difficulty
+- Keep the game UI as stable as possible
+- Do not switch to other windows at will, to avoid affecting recognition results
 
 ---
 
-## 图片模板说明
+### 2. Configure parameters
 
-项目支持替换主要识图模板，常见自定义图片如下：
+In the main UI you can set:
 
-- `CCbrand.png`：消耗品车辆品牌
-- `consumablecar.png`：用于点技能拿超级抽奖的消耗品车
-- `newCC.png`：标记新车的消耗品车
-- `skillcar.png`：用于跑图刷技能点的车辆  
-  > 该车辆必须已加入收藏，并在图中显示收藏图标
-
-### 图片资源特点
-项目中的 `images` 模板图支持：
-
-- 优先读取程序目录外部 `images`
-- 外部没有时再读取内置资源
-- 启动时可自动释放模板图到外部目录
-
-这样做的好处是：
-
-- 用户可以自行替换模板
-- 可微调识图适配不同画质 / 分辨率 / UI 状态
-- 更方便维护与迭代
+- Number of races
+- Number of cars to buy
+- Number of wheelspins
+- Blueprint share code
+- Total number of loops
+- Whether to chain to the next module
+- Whether to enable the three-module big loop
+- Whether to enable the auto-restart mechanism
+- The auto-restart command
 
 ---
 
-## 防错与恢复说明
+### 3. Set the skill path
 
-如果执行过程中发生以下情况：
+In the "Super wheelspin" module area:
 
-- 图像识别失败
-- 当前界面异常
-- 流程中断
-- 游戏闪退
-
-程序会优先尝试：
-
-1. 检查游戏进程
-2. 聚焦游戏窗口
-3. 退回漫游 / 菜单
-4. 自动恢复到可继续执行的状态
-
-如果启用了自动重启：
-
-- 会尝试使用预设命令重新启动游戏
-- 并在识别到继续界面后恢复流程
-
-> 自动恢复不能保证 100% 成功，但相比无保护脚本，稳定性会更高。
+- Click the direction buttons to add to the skill path
+- Click "Clear matrix" to reset the path
+- Blue cells show the current skill-walking path
 
 ---
 
-## 项目亮点
+### 4. Start a single module
 
-### 基于 Python 图像识别
-本项目并不是简单的固定坐标点击器，而是结合以下技术进行界面识别：
+You can start any module independently:
 
-- `pyautogui` 截图
-- `opencv-python (cv2)` 模板匹配
-- `numpy` 图像处理
+- Race-farming loop
+- Bulk car buying
+- Super wheelspin
 
-对当前游戏界面进行识别后，再决定下一步动作，因此相比纯脚本具有更高的适应性与可控性。
+The program will start from the corresponding module.
 
-### 尽量减少“盲操”风险
-传统脚本常见问题包括：
+---
 
-- 不判断页面状态
-- 一直机械按键
-- 一旦卡界面就彻底跑偏
+### 5. Start a chained flow
 
-本项目尽量通过识图确认：
+If you check the "continue" option (at the arrow), modules will chain automatically, for example:
 
-- 当前是否在漫游界面
-- 是否进入主菜单
-- 是否找到指定按钮
-- 是否已进入升级页
-- 是否出现继续游戏 / 欢迎界面 / 重启页面
+- After racing finishes, continue to buying cars
+- After buying cars finishes, continue to wheelspins
 
-只有识别到正确状态，才执行后续动作。
+If you also check `LOOP -> reset loop`, the three modules will automatically start a new round after completing.
 
-### 多层防错误机制
-项目内包含多层保护逻辑，例如：
+---
 
-#### 1. 状态验证
-关键步骤前会确认：
-- 是否成功进入菜单
-- 是否识别到目标页面
-- 是否找到指定图片模板
-- 是否仍在运行状态
+### 6. Stop the script
 
-#### 2. 中断恢复
-当模块执行失败时，会尝试：
-- 检测游戏进程是否仍存在
-- 自动聚焦游戏窗口
-- 自动尝试退回菜单 / 漫游
-- 从中断模块继续执行剩余流程
+You can stop it by:
 
-#### 3. 自动重启机制（测试功能）
-当检测到游戏进程不存在时，可选择：
-- 执行自定义启动命令
-- 等待游戏重新启动
-- 自动识别欢迎页 / 继续游戏界面
-- 尝试重新回到游戏并恢复执行
+- Clicking the stop button in the UI
+- Pressing **F8** on the keyboard
 
-#### 4. 按键强制释放
-脚本停止时会主动释放：
-- 方向键
+After stopping, the program will try its best to:
+- Stop the current thread
+- Release all held keys
+- Restore the main UI state
+
+---
+
+## Image template notes
+
+The project supports replacing the main recognition templates. Common custom images include:
+
+- `CCbrand.png`: the consumable car brand
+- `consumablecar.png`: the consumable car used to spend skill points for the super wheelspin
+- `newCC.png`: the consumable car marked as a new car
+- `skillcar.png`: the car used for race-farming to grind skill points
+  > This car must already be added to favorites and must show the favorite icon in the image
+
+### Image resource behavior
+The `images` template images in the project support:
+
+- Reading the external `images` next to the program first
+- Falling back to the bundled resources when no external copy exists
+- Automatically extracting the template images to the external directory on startup
+
+The benefits of this are:
+
+- Users can replace the templates themselves
+- Recognition can be fine-tuned for different image quality / resolution / UI states
+- Easier maintenance and iteration
+
+---
+
+## Error-prevention and recovery notes
+
+If any of the following happens during execution:
+
+- Image recognition fails
+- The current UI is abnormal
+- The flow is interrupted
+- The game crashes
+
+The program will first try to:
+
+1. Check the game process
+2. Focus the game window
+3. Back out to Free Roam / the menu
+4. Automatically recover to a state where execution can continue
+
+If auto-restart is enabled:
+
+- It will try to relaunch the game using the preset command
+- And resume the flow after recognizing the continue screen
+
+> Auto-recovery cannot be guaranteed to succeed 100% of the time, but it is more stable than an unprotected script.
+
+---
+
+## Project highlights
+
+### Based on Python image recognition
+This project is not a simple fixed-coordinate clicker; it recognizes the UI by combining the following techniques:
+
+- `pyautogui` screenshots
+- `opencv-python (cv2)` template matching
+- `numpy` image processing
+
+After recognizing the current game UI, it then decides the next action, so it is more adaptive and controllable than a pure script.
+
+### Minimizing "blind operation" risk
+Traditional scripts commonly suffer from:
+
+- Not checking the page state
+- Pressing keys mechanically without stop
+- Going completely off the rails once stuck on a screen
+
+This project tries to confirm via recognition:
+
+- Whether you are in Free Roam
+- Whether the main menu has been entered
+- Whether the specified button was found
+- Whether the upgrade page has been entered
+- Whether a continue game / welcome screen / restart page has appeared
+
+Only when the correct state is recognized does it perform the subsequent action.
+
+### Multi-layer error protection
+The project contains multiple layers of protection logic, for example:
+
+#### 1. State validation
+Before key steps it confirms:
+- Whether the menu was successfully entered
+- Whether the target page was recognized
+- Whether the specified image template was found
+- Whether it is still running
+
+#### 2. Interruption recovery
+When a module fails to execute, it tries to:
+- Detect whether the game process still exists
+- Auto-focus the game window
+- Auto-try to back out to the menu / Free Roam
+- Continue the remaining flow from the interrupted module
+
+#### 3. Auto-restart mechanism (experimental feature)
+When it detects that the game process is gone, it can optionally:
+- Run a custom launch command
+- Wait for the game to restart
+- Auto-recognize the welcome page / continue game screen
+- Try to get back into the game and resume execution
+
+#### 4. Forced key release
+When the script stops it actively releases:
+- The arrow keys
 - Enter / Esc / Backspace / Space
-- 持续按住的 W 键等
+- A continuously-held W key, etc.
 
-避免因为异常退出导致“卡键”。
+This avoids "stuck keys" caused by an abnormal exit.
 
-### 支持无限循环挂机
-你可以把它理解成一个可编排的小型挂机流水线：
+### Supports endless idle farming
+You can think of it as a small, composable idle pipeline:
 
-- 先跑图刷收益
-- 再自动买车
-- 然后自动点熟练度拿抽奖
-- 完成后进入下一轮
+- First race-farm for income
+- Then auto-buy cars
+- Then auto-spend mastery to get wheelspins
+- Then start the next round
 
-配合总循环数设置，可以长时间无人值守运行。  
-如果将循环次数设置得足够高，也可视作“无限循环挂机”。
+Combined with the total loop count setting, it can run unattended for a long time.
+If you set the loop count high enough, it can effectively act as "endless idle farming".
 
-### 技能矩阵可自定义
-超级抽奖模块支持手动设置技能点路径。  
-用户可以通过 UI 中的方向按钮，自定义：
+### Customizable skill matrix
+The super wheelspin module supports manually setting the skill-point path.
+Using the direction buttons in the UI, you can customize:
 
-- 上
-- 下
-- 左
-- 右
+- Up
+- Down
+- Left
+- Right
 
-形成一条技能路径矩阵，用于适配不同车辆的熟练度树。
-
----
-
-## 技术实现
-
-本项目主要基于以下 Python 技术栈：
-
-- **customtkinter**：现代化桌面 UI
-- **opencv-python**：模板匹配 / 图像识别
-- **numpy**：图像数组处理
-- **pyautogui**：截图与基础自动化
-- **pydirectinput**：更适合游戏场景的输入模拟
-- **ctypes / win32gui**：窗口聚焦、DPI 适配、底层输入
-- **threading**：后台任务执行
-- **PIL**：资源图像加载
-- **requests**：版本更新检查
+to form a skill path matrix that adapts to different cars' mastery trees.
 
 ---
 
-## 适用特点
+## Technical implementation
 
-- 面向 Windows 环境
-- 支持不同分辨率下的模板缩放匹配
-- 使用 DPI 感知处理，减少高缩放显示下的坐标偏差
-- 支持主界面最小化执行逻辑
-- 支持热键 **F8** 紧急停止
+This project is mainly built on the following Python stack:
+
+- **customtkinter**: modern desktop UI
+- **opencv-python**: template matching / image recognition
+- **numpy**: image array processing
+- **pyautogui**: screenshots and basic automation
+- **pydirectinput**: input simulation better suited to games
+- **ctypes / win32gui**: window focusing, DPI adaptation, low-level input
+- **threading**: background task execution
+- **PIL**: resource image loading
+- **requests**: version update checking
+
+---
+
+## Notable characteristics
+
+- Targets Windows
+- Supports scaled template matching across different resolutions
+- Uses DPI awareness to reduce coordinate drift under high display scaling
+- Supports execution logic with the main UI minimized
+- Supports the **F8** hotkey for emergency stop
