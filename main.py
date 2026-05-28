@@ -503,7 +503,7 @@ class FH_UltimateBot(ctk.CTk):
             self.config["next_4"] = int(self.entry_next4.get())
             if hasattr(self, "opt_sell_mode"):
                 val = self.opt_sell_mode.get()
-                if "模式1" in val:
+                if "Mode 1" in val:
                     self.config["sell_mode"] = 1
                 else:
                     self.config["sell_mode"] = 2
@@ -648,7 +648,7 @@ class FH_UltimateBot(ctk.CTk):
 
             lbl = ctk.CTkLabel(
                 frame,
-                text=f"执行: 0 / {def_val}",
+                text=f"Run: 0 / {def_val}",
                 text_color="#A0A0A0",
                 font=ctk.CTkFont(size=16),
             )
@@ -662,7 +662,7 @@ class FH_UltimateBot(ctk.CTk):
 
             ctk.CTkLabel(
                 frame,
-                text="下一步骤",
+                text="Next Step",
                 font=ctk.CTkFont(size=18, weight="bold"),
                 text_color="#5DADE2",
             ).pack(pady=(55, 10))
@@ -671,7 +671,7 @@ class FH_UltimateBot(ctk.CTk):
             entry.insert(0, str(def_step))
             entry.pack(pady=6)
 
-            chk = ctk.CTkCheckBox(frame, text="继续", variable=var_checked, width=60)
+            chk = ctk.CTkCheckBox(frame, text="Continue", variable=var_checked, width=60)
             chk.pack(pady=8)
 
             return frame, entry, chk
@@ -683,13 +683,13 @@ class FH_UltimateBot(ctk.CTk):
 
         box_race, self.btn_race, self.entry_race, self.lbl_race = create_box(
             self.config_frame,
-            "1. 循环跑图",
-            "开始",
+            "1. Loop Racing",
+            "Start",
             lambda: self.start_pipeline("race"),
             "#1F6AA5",
             self.config.get("race_count", 99),
         )
-        self.entry_share = ctk.CTkEntry(box_race, width=130, justify="center", placeholder_text="蓝图数字代码")
+        self.entry_share = ctk.CTkEntry(box_race, width=130, justify="center", placeholder_text="Blueprint Code")
         self.entry_share.insert(0, self.config.get("share_code", "890169683"))
         self.entry_share.pack(pady=4)
 
@@ -699,8 +699,8 @@ class FH_UltimateBot(ctk.CTk):
 
         box_car, self.btn_car, self.entry_car, self.lbl_car = create_box(
             self.config_frame,
-            "2. 批量买车",
-            "开始",
+            "2. Bulk Buy Cars",
+            "Start",
             lambda: self.start_pipeline("buy"),
             "#2EA043",
             self.config.get("buy_count", 30),
@@ -728,11 +728,11 @@ class FH_UltimateBot(ctk.CTk):
         left_cj = ctk.CTkFrame(top_cj, fg_color="transparent")
         left_cj.pack(side="left", padx=10)
 
-        ctk.CTkLabel(left_cj, text="3. 超级抽奖", font=ctk.CTkFont(weight="bold", size=20)).pack(pady=(0, 8))
+        ctk.CTkLabel(left_cj, text="3. Super Wheelspin", font=ctk.CTkFont(weight="bold", size=20)).pack(pady=(0, 8))
 
         self.btn_cj = ctk.CTkButton(
             left_cj,
-            text="开始",
+            text="Start",
             width=120,
             height=38,
             corner_radius=10,
@@ -748,7 +748,7 @@ class FH_UltimateBot(ctk.CTk):
 
         self.lbl_cj = ctk.CTkLabel(
             left_cj,
-            text=f"执行: 0 / {self.config.get('cj_count', 30)}",
+            text=f"Run: 0 / {self.config.get('cj_count', 30)}",
             text_color="#A0A0A0",
             font=ctk.CTkFont(size=14),
         )
@@ -769,7 +769,7 @@ class FH_UltimateBot(ctk.CTk):
 
         ctk.CTkButton(
             left_cj,
-            text="清除矩阵",
+            text="Clear Matrix",
             width=90,
             height=28,
             corner_radius=8,
@@ -796,7 +796,7 @@ class FH_UltimateBot(ctk.CTk):
                 self.grid_labels[r][c] = lbl
         ctk.CTkLabel(
             self.grid_frame,
-            text="技能树",
+            text="Skill Tree",
             font=ctk.CTkFont(size=14, weight="bold"),
             text_color="#A0A0A0",
         ).grid(row=4, column=0, columnspan=4, pady=(8, 0))
@@ -807,8 +807,8 @@ class FH_UltimateBot(ctk.CTk):
 
         box_sc, self.btn_sc, self.entry_sc, self.lbl_sc = create_box(
             self.config_frame,
-            "4. 移除车辆",
-            "！！开始！！",
+            "4. Remove Cars",
+            "!! START !!",
             lambda: self.start_pipeline("sell"),
             "#D97706",
             self.config.get("sc_count", 30),
@@ -816,7 +816,7 @@ class FH_UltimateBot(ctk.CTk):
         # ====== Added: remove-car mode dropdown ======
         self.opt_sell_mode = ctk.CTkOptionMenu(
             box_sc,
-            values=["模式1: 识图移除模式", "模式2: 移除最近添加"],
+            values=["Mode 1: Image Removal", "Mode 2: Remove Recent"],
             width=180,
             height=28,
             corner_radius=6,
@@ -827,10 +827,10 @@ class FH_UltimateBot(ctk.CTk):
         )
         # Read config; default to mode 1
         saved_mode = self.config.get("sell_mode", 1)
-        if str(saved_mode) == "1" or "模式1" in str(saved_mode):
-            self.opt_sell_mode.set("模式1: 识图移除模式")
+        if str(saved_mode) == "1" or "Mode 1" in str(saved_mode):
+            self.opt_sell_mode.set("Mode 1: Image Removal")
         else:
-            self.opt_sell_mode.set("模式2: 移除最近添加")
+            self.opt_sell_mode.set("Mode 2: Remove Recent")
             
         self.opt_sell_mode.pack(pady=4)
         # ==========================================
@@ -845,18 +845,18 @@ class FH_UltimateBot(ctk.CTk):
         self.global_settings_frame.pack_propagate(False)
         ctk.CTkLabel(
             self.global_settings_frame, 
-            text="⚙️ 循环与守护设置", 
+            text="⚙️ Loop & Guard Settings",
             font=ctk.CTkFont(weight="bold", size=15), 
             text_color="#F1C40F"
         ).pack(side="left", padx=(15, 20))
-        ctk.CTkLabel(self.global_settings_frame, text="大循环次数:").pack(side="left", padx=(10, 5))
+        ctk.CTkLabel(self.global_settings_frame, text="Loop Count:").pack(side="left", padx=(10, 5))
         self.entry_global_loop = ctk.CTkEntry(self.global_settings_frame, width=70, height=28, justify="center")
         self.entry_global_loop.insert(0, str(self.config.get("global_loops", 10)))
         self.entry_global_loop.pack(side="left", padx=(0, 20))
         self.var_auto_restart = ctk.BooleanVar(value=self.config.get("auto_restart", True))
-        self.cb_auto_restart = ctk.CTkCheckBox(self.global_settings_frame, text="游戏闪退自动重启（测试）", variable=self.var_auto_restart)
+        self.cb_auto_restart = ctk.CTkCheckBox(self.global_settings_frame, text="Auto-restart on crash (Beta)", variable=self.var_auto_restart)
         self.cb_auto_restart.pack(side="left", padx=(10, 20))
-        ctk.CTkLabel(self.global_settings_frame, text="启动命令(CMD):").pack(side="left", padx=(10, 5))
+        ctk.CTkLabel(self.global_settings_frame, text="Launch Cmd (CMD):").pack(side="left", padx=(10, 5))
         self.le_restart_cmd = ctk.CTkEntry(self.global_settings_frame, width=250, height=28)
         self.le_restart_cmd.insert(0, self.config.get("restart_cmd", "start steam://run/2483190"))
         self.le_restart_cmd.pack(side="left", padx=(0, 20))
@@ -872,25 +872,25 @@ class FH_UltimateBot(ctk.CTk):
         self.calc_frame.pack_propagate(False)
         ctk.CTkLabel(
             self.calc_frame, 
-            text="次数计算器", 
+            text="Count Calculator",
             font=ctk.CTkFont(weight="bold", size=15), 
             text_color="#2EA043"
         ).pack(side="left", padx=(15, 20))
         ctk.CTkLabel(self.calc_frame, text="CR:").pack(side="left", padx=(0, 5))
-        self.entry_calc_a = ctk.CTkEntry(self.calc_frame, width=110, height=28, placeholder_text="留空不计算")
+        self.entry_calc_a = ctk.CTkEntry(self.calc_frame, width=110, height=28, placeholder_text="Leave blank to skip")
         self.entry_calc_a.insert(0, self.config.get("calc_a", ""))
         self.entry_calc_a.pack(side="left", padx=(0, 15))
-        ctk.CTkLabel(self.calc_frame, text="单车成本(CR):").pack(side="left", padx=(0, 5))
+        ctk.CTkLabel(self.calc_frame, text="Cost/car (CR):").pack(side="left", padx=(0, 5))
         self.entry_calc_b = ctk.CTkEntry(self.calc_frame, width=70, height=28)
         self.entry_calc_b.insert(0, self.config.get("calc_b", "81700"))
         self.entry_calc_b.pack(side="left", padx=(0, 15))
-        ctk.CTkLabel(self.calc_frame, text="单车技能点:").pack(side="left", padx=(0, 5))
+        ctk.CTkLabel(self.calc_frame, text="Skill pts/car:").pack(side="left", padx=(0, 5))
         self.entry_calc_c = ctk.CTkEntry(self.calc_frame, width=50, height=28)
         self.entry_calc_c.insert(0, self.config.get("calc_c", "30"))
         self.entry_calc_c.pack(side="left", padx=(0, 15))
         ctk.CTkButton(
             self.calc_frame,
-            text="计算并应用",
+            text="Calculate & Apply",
             width=90,
             height=28,
             fg_color="#D35400",
@@ -934,22 +934,22 @@ class FH_UltimateBot(ctk.CTk):
         self.mini_info_frame = ctk.CTkFrame(self.mini_frame, fg_color="transparent")
         self.mini_info_frame.pack(side="left", fill="y", padx=5, pady=10)
 
-        self.lbl_mini_task = ctk.CTkLabel(self.mini_info_frame, text="当前任务: 等待中", font=ctk.CTkFont(size=14, weight="bold"), text_color="#3498DB")
+        self.lbl_mini_task = ctk.CTkLabel(self.mini_info_frame, text="Current Task: Waiting", font=ctk.CTkFont(size=14, weight="bold"), text_color="#3498DB")
         self.lbl_mini_task.pack(pady=(5, 2), anchor="w")
 
-        self.lbl_mini_prog = ctk.CTkLabel(self.mini_info_frame, text="任务进度: 0 / 0", font=ctk.CTkFont(size=13))
+        self.lbl_mini_prog = ctk.CTkLabel(self.mini_info_frame, text="Task Progress: 0 / 0", font=ctk.CTkFont(size=13))
         self.lbl_mini_prog.pack(pady=2, anchor="w")
 
-        self.lbl_mini_loop = ctk.CTkLabel(self.mini_info_frame, text="大循环: 0 / 0", font=ctk.CTkFont(size=13))
+        self.lbl_mini_loop = ctk.CTkLabel(self.mini_info_frame, text="Loops: 0 / 0", font=ctk.CTkFont(size=13))
         self.lbl_mini_loop.pack(pady=2, anchor="w")
 
-        self.lbl_mini_time = ctk.CTkLabel(self.mini_info_frame, text="总耗时: 00:00:00", font=ctk.CTkFont(size=13))
+        self.lbl_mini_time = ctk.CTkLabel(self.mini_info_frame, text="Total Time: 00:00:00", font=ctk.CTkFont(size=13))
         self.lbl_mini_time.pack(pady=2, anchor="w")
         # 3. Button area (aligned right)
-        self.btn_mini_stop = ctk.CTkButton(self.mini_frame, text="⏸ 停止 (F8)", fg_color="#DA3633", hover_color="#B02A37", width=90, font=ctk.CTkFont(weight="bold"), command=self.stop_all)
+        self.btn_mini_stop = ctk.CTkButton(self.mini_frame, text="⏸ Stop (F8)", fg_color="#DA3633", hover_color="#B02A37", width=90, font=ctk.CTkFont(weight="bold"), command=self.stop_all)
         self.btn_mini_stop.pack(side="left", fill="y", padx=5, pady=10)
 
-        self.btn_mini_support = ctk.CTkButton(self.mini_frame, text="❤ 支持", fg_color="#F97316", hover_color="#EA580C", width=60, font=ctk.CTkFont(weight="bold"), command=self.open_support_window)
+        self.btn_mini_support = ctk.CTkButton(self.mini_frame, text="❤ Support", fg_color="#F97316", hover_color="#EA580C", width=60, font=ctk.CTkFont(weight="bold"), command=self.open_support_window)
         self.btn_mini_support.pack(side="left", fill="y", padx=(5, 10), pady=10)
 
 
@@ -958,7 +958,7 @@ class FH_UltimateBot(ctk.CTk):
 
         self.btn_stop = ctk.CTkButton(
             self.bottom_frame,
-            text="⏸ 等待指令 (F8)",
+            text="⏸ Awaiting Command (F8)",
             fg_color="#3A3A3A",
             hover_color="#4A4A4A",
             width=180,
@@ -981,7 +981,7 @@ class FH_UltimateBot(ctk.CTk):
 
         self.btn_support = ctk.CTkButton(
             self,
-            text="❤ 支持作者 / 检查更新",
+            text="❤ Support Author / Check Updates",
             fg_color="#F97316",
             hover_color="#EA580C",
             height=42,
@@ -1000,7 +1000,7 @@ class FH_UltimateBot(ctk.CTk):
             return
 
         self.support_win = ctk.CTkToplevel(self)
-        self.support_win.title("感谢支持 & 更新")
+        self.support_win.title("Thanks & Updates")
         self.support_win.geometry("340x520")
         self.support_win.attributes("-topmost", True)
         self.support_win.resizable(False, False)
@@ -1019,14 +1019,14 @@ class FH_UltimateBot(ctk.CTk):
 
         ctk.CTkLabel(
             self.support_win,
-            text="感谢您的支持与鼓励",
+            text="Thank you for your support",
             font=ctk.CTkFont(weight="bold", size=18),
             text_color="#F97316",
         ).pack(pady=(20, 6))
 
         ctk.CTkLabel(
             self.support_win,
-            text="您的支持是我持续优化的动力！",
+            text="Your support keeps me improving!",
             font=ctk.CTkFont(size=12),
         ).pack(pady=4)
 
@@ -1039,13 +1039,13 @@ class FH_UltimateBot(ctk.CTk):
                 qr_label.image = qr_img
                 qr_label.pack(pady=10)
             else:
-                ctk.CTkLabel(self.support_win, text="（未找到内置 qrcode.png）", text_color="gray").pack(pady=40)
+                ctk.CTkLabel(self.support_win, text="(qrcode.png not found)", text_color="gray").pack(pady=40)
         except Exception:
-            ctk.CTkLabel(self.support_win, text="（二维码加载失败）", text_color="gray").pack(pady=40)
+            ctk.CTkLabel(self.support_win, text="(Failed to load QR code)", text_color="gray").pack(pady=40)
 
         ctk.CTkButton(
             self.support_win,
-            text="前往 爱发电 赞助主页",
+            text="Go to Afdian Sponsor Page",
             fg_color="#8E44AD",
             hover_color="#7D3C98",
             command=lambda: webbrowser.open("https://ifdian.net/a/yousto"),
@@ -1055,14 +1055,14 @@ class FH_UltimateBot(ctk.CTk):
 
         self.lbl_version = ctk.CTkLabel(
             self.support_win,
-            text=f"当前版本: v{CURRENT_VERSION}",
+            text=f"Current Version: v{CURRENT_VERSION}",
             text_color="gray",
             font=ctk.CTkFont(size=12),
         )
         self.lbl_version.pack()
 
         def check_update_logic():
-            self.ui_call(self.lbl_version.configure, text="正在连接 Github...", text_color="#3498DB")
+            self.ui_call(self.lbl_version.configure, text="Connecting to Github...", text_color="#3498DB")
             try:
                 url = "https://raw.githubusercontent.com/YOUSTHEONE/FH6Auto/refs/heads/main/version.json"
                 resp = requests.get(url, timeout=5)
@@ -1075,32 +1075,32 @@ class FH_UltimateBot(ctk.CTk):
                         if remote_url.startswith("https://github.com/YOUSTHEONE/") or remote_url.startswith("https://ifdian.net/"):
                             self.ui_call(
                                 self.lbl_version.configure,
-                                text=f"发现新版本 v{remote_ver}，已打开浏览器！",
+                                text=f"New version v{remote_ver} found, browser opened!",
                                 text_color="#2EA043",
                             )
                             webbrowser.open(remote_url)
                         else:
                             self.ui_call(
                                 self.lbl_version.configure,
-                                text="发现更新，但链接不可信，已拦截",
+                                text="Update found but link untrusted, blocked",
                                 text_color="#DA3633",
                             )
                     else:
                         self.ui_call(
                             self.lbl_version.configure,
-                            text=f"当前已是最新版本 (v{CURRENT_VERSION})",
+                            text=f"Already up to date (v{CURRENT_VERSION})",
                             text_color="gray",
                         )
                 else:
                     self.ui_call(
                         self.lbl_version.configure,
-                        text="检查更新失败 (服务器异常)",
+                        text="Update check failed (server error)",
                         text_color="#DA3633",
                     )
             except Exception:
                 self.ui_call(
                     self.lbl_version.configure,
-                    text="检查更新失败 (网络超时或无法访问)",
+                    text="Update check failed (network timeout)",
                     text_color="#DA3633",
                 )
 
@@ -1109,7 +1109,7 @@ class FH_UltimateBot(ctk.CTk):
 
         ctk.CTkButton(
             btn_frame,
-            text="检查更新",
+            text="Check Updates",
             width=100,
             height=30,
             fg_color="#444444",
@@ -1133,7 +1133,7 @@ class FH_UltimateBot(ctk.CTk):
         hrs = elapsed // 3600
         mins = (elapsed % 3600) // 60
         secs = elapsed % 60
-        time_str = f"总耗时: {hrs:02d}:{mins:02d}:{secs:02d}"
+        time_str = f"Total Time: {hrs:02d}:{mins:02d}:{secs:02d}"
         try:
             self.lbl_mini_time.configure(text=time_str)
         except Exception: pass
@@ -1144,9 +1144,9 @@ class FH_UltimateBot(ctk.CTk):
     def update_running_ui(self, task_name="", current_val=0, max_val=0):
         try:
             if task_name:
-                self.ui_call(self.lbl_mini_task.configure, text=f"当前任务: {task_name}")
+                self.ui_call(self.lbl_mini_task.configure, text=f"Current Task: {task_name}")
             if max_val > 0:
-                self.ui_call(self.lbl_mini_prog.configure, text=f"执行进度: {current_val} / {max_val}")
+                self.ui_call(self.lbl_mini_prog.configure, text=f"Task Progress: {current_val} / {max_val}")
         except Exception:
             pass
 
@@ -1340,7 +1340,7 @@ class FH_UltimateBot(ctk.CTk):
         self.update_timer()
 
         
-        self.update_running_ui("初始化中...")
+        self.update_running_ui("Initializing...")
         self.race_counter = 0
         self.car_counter = 0
         self.cj_counter = 0
@@ -1361,7 +1361,7 @@ class FH_UltimateBot(ctk.CTk):
                 total_loops = self.config.get("global_loops", 10)
             self.global_loop_current = 1
             if hasattr(self, "lbl_mini_loop"):
-                self.ui_call(self.lbl_mini_loop.configure, text=f"大循环: {self.global_loop_current} / {total_loops}")
+                self.ui_call(self.lbl_mini_loop.configure, text=f"Loops: {self.global_loop_current} / {total_loops}")
 
             # Added: global consecutive-failure counter
             continuous_failures = 0 
@@ -1382,7 +1382,7 @@ class FH_UltimateBot(ctk.CTk):
                     elif step_name == "sell":
                         # ====== Added: read the mode from the dropdown ======
                         sell_mode = self.opt_sell_mode.get()
-                        if "模式1" in sell_mode:
+                        if "Mode 1" in sell_mode:
                             success = self.find_and_remove_consumable_car(int(self.entry_sc.get()))
                         else:
                             success = self.sell_consumable_car(int(self.entry_sc.get()))
@@ -1447,7 +1447,7 @@ class FH_UltimateBot(ctk.CTk):
                     self.log(f"开启新一轮大循环 ({self.global_loop_current}/{total_loops})")
                     
                     if hasattr(self, "lbl_mini_loop"):
-                        self.ui_call(self.lbl_mini_loop.configure, text=f"大循环: {self.global_loop_current} / {total_loops}")
+                        self.ui_call(self.lbl_mini_loop.configure, text=f"Loops: {self.global_loop_current} / {total_loops}")
 
                     self.race_counter = 0
                     self.car_counter = 0
@@ -1501,7 +1501,7 @@ class FH_UltimateBot(ctk.CTk):
             self.btn_support.pack(fill="x", padx=18, pady=(6, 12))
             
             # Restore the window's original state
-            self.btn_stop.configure(text="等待指令 (F8)", fg_color="#3A3A3A", hover_color="#4A4A4A")
+            self.btn_stop.configure(text="Awaiting Command (F8)", fg_color="#3A3A3A", hover_color="#4A4A4A")
             self.attributes("-topmost", False)
             self.geometry("1800x800")
             self.center_window()
@@ -2874,7 +2874,7 @@ class FH_UltimateBot(ctk.CTk):
         if self.race_counter >= target_count:
             return True
 
-        self.update_running_ui("循环跑图", self.race_counter, target_count)
+        self.update_running_ui("Loop Racing", self.race_counter, target_count)
 
         self.log("准备验证/进入菜单...")
         if not self.enter_menu():
@@ -3138,7 +3138,7 @@ class FH_UltimateBot(ctk.CTk):
                 time.sleep(2.0)
 
             self.race_counter += 1
-            self.update_running_ui("循环跑图", self.race_counter, target_count)
+            self.update_running_ui("Loop Racing", self.race_counter, target_count)
 
         return True
 
@@ -3149,7 +3149,7 @@ class FH_UltimateBot(ctk.CTk):
         if self.car_counter >= target_count:
             return True
 
-        self.update_running_ui("批量买车", self.car_counter, target_count)
+        self.update_running_ui("Bulk Buy Cars", self.car_counter, target_count)
 
         self.log("准备验证/进入菜单...")
         if not self.enter_menu():
@@ -3268,7 +3268,7 @@ class FH_UltimateBot(ctk.CTk):
             time.sleep(0.7)
 
             self.car_counter += 1
-            self.update_running_ui("批量买车", self.car_counter, target_count)
+            self.update_running_ui("Bulk Buy Cars", self.car_counter, target_count)
 
         for _ in range(5):
             if not self.is_running:
@@ -3284,7 +3284,7 @@ class FH_UltimateBot(ctk.CTk):
         if self.cj_counter >= target_count:
             return True
 
-        self.update_running_ui("超级抽奖", self.cj_counter, target_count)
+        self.update_running_ui("Super Wheelspin", self.cj_counter, target_count)
         # Added: initialize the remembered page number
         if not hasattr(self, 'memory_car_page'):
             self.memory_car_page = 0
@@ -3502,7 +3502,7 @@ class FH_UltimateBot(ctk.CTk):
                     time.sleep(1.0)
                     return True
                 self.cj_counter += 1
-                self.update_running_ui("超级抽奖", self.cj_counter, target_count)
+                self.update_running_ui("Super Wheelspin", self.cj_counter, target_count)
 
             self.hw_press("esc")
             time.sleep(1.2)
@@ -3522,7 +3522,7 @@ class FH_UltimateBot(ctk.CTk):
         if self.sc_count >= target_count:
             return True
 
-        self.update_running_ui("移除车辆", self.sc_count, target_count)
+        self.update_running_ui("Remove Cars", self.sc_count, target_count)
 
         self.log("准备验证/进入菜单！！！使用前请人工核验到正常移除车辆再进行自动化移除处理")
         if not self.enter_menu():
@@ -3658,7 +3658,7 @@ class FH_UltimateBot(ctk.CTk):
         if self.sc_count >= target_count:
             return True
         
-        self.update_running_ui("移除车辆", self.sc_count, target_count)
+        self.update_running_ui("Remove Cars", self.sc_count, target_count)
 
         self.log("准备验证/进入菜单！！！使用前请人工核验到正常移除车辆再进行自动化移除处理")
         if not self.enter_menu():
@@ -3853,7 +3853,7 @@ class FH_UltimateBot(ctk.CTk):
 
             
             self.sc_count += 1
-            self.update_running_ui("移除车辆", self.sc_count, target_count)
+            self.update_running_ui("Remove Cars", self.sc_count, target_count)
             self.log(f"成功移除车辆！当前进度: {self.sc_count}/{target_count}")
 
         # Loop done, back out one level

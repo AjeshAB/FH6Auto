@@ -9,24 +9,50 @@ set MAIN_FILE=main.py
 
 echo.
 echo ==============================
-echo 开始打包 %APP_NAME%
+echo Building %APP_NAME%
 echo ==============================
 echo.
 
-where python >nul 2>nul
+where uv >nul 2>nul
 if errorlevel 1 (
-    echo [错误] 未找到 python，请先配置环境变量
+    echo [ERROR] 'uv' was not found. Please install uv first.
+    echo powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
     pause
     exit /b 1
 )
 
-echo [1/3] 清理旧文件...
+echo.
+echo [1/4] Installing required packages...
+
+uv pip install ^
+    pyinstaller ^
+    customtkinter ^
+    opencv-python ^
+    numpy ^
+    pyautogui ^
+    pydirectinput ^
+    requests ^
+    pynput ^
+    pillow ^
+    pywin32
+
+if errorlevel 1 (
+    echo.
+    echo [ERROR] Failed to install packages!
+    pause
+    exit /b 1
+)
+
+echo.
+echo [2/4] Cleaning old build files...
 if exist build rmdir /s /q build
 if exist dist rmdir /s /q dist
 if exist "%APP_NAME%.spec" del /f /q "%APP_NAME%.spec"
 
-echo [2/3] 执行 PyInstaller...
-python -m PyInstaller ^
+echo.
+echo [3/4] Running PyInstaller...
+
+uv run python -m PyInstaller ^
     -n "%APP_NAME%" ^
     -F ^
     -w ^
@@ -38,13 +64,14 @@ python -m PyInstaller ^
 
 if errorlevel 1 (
     echo.
-    echo [错误] 打包失败！
+    echo [ERROR] Build failed!
     pause
     exit /b 1
 )
 
 echo.
-echo [3/3] 打包完成！
-echo 输出目录: dist\%APP_NAME%.exe
+echo [4/4] Build completed successfully!
+echo Output:
+echo dist\%APP_NAME%.exe
 echo.
 pause
